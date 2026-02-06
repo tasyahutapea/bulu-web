@@ -1,0 +1,184 @@
+/* Root Colors */
+:root {
+  --blue-soft: #E0F2FE;
+  --blue-main: #60A5FA;
+  --blue-dark: #1E3A8A;
+  --pink-soft: #FBCFE8;
+  --pink-main: #F472B6;
+}
+
+/* Global */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--blue-soft);
+  color: var(--blue-dark);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background-color: var(--blue-main);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  transform: scale(1.1);
+}
+
+/* Caterpillar Logo */
+.caterpillar {
+  display: flex;
+  gap: 4px;
+}
+
+.caterpillar span {
+  width: 14px;
+  height: 14px;
+  background-color: var(--pink-soft);
+  border-radius: 50%;
+  animation: wiggle 1.2s infinite ease-in-out;
+}
+.caterpillar span:nth-child(2) { animation-delay: 0.15s; }
+.caterpillar span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes wiggle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Hero Section */
+.hero {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, var(--blue-soft), var(--pink-soft));
+  color: var(--blue-dark);
+  overflow: hidden;
+}
+
+.hero-title, .hero-desc {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-slide {
+  animation: fadeSlide 1s forwards;
+}
+
+.fade-slide-delay {
+  animation: fadeSlide 1s forwards 0.5s;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button */
+.btn-primary {
+  background-color: white;
+  color: var(--blue-main);
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #f0f8ff;
+  transform: scale(1.05);
+}
+
+/* Courses Section */
+.courses {
+  padding: 80px 40px;
+}
+
+.course-container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.course-card {
+  background-color: white;
+  padding: 24px;
+  width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-10px) rotate(-1deg) scale(1.03);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+}
+
+/* Loading Screen */
+#loading {
+  position: fixed;
+  inset: 0;
+  background-color: var(--blue-soft);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+
+#loading.fade-out { opacity: 0; }
+
+.loading-caterpillar span {
+  width: 18px;
+  height: 18px;
+  background-color: var(--pink-main);
+  border-radius: 50%;
+  display: inline-block;
+  animation: crawl 0.8s infinite ease-in-out;
+}
+
+.loading-caterpillar span:nth-child(2) { animation-delay: 0.1s; }
+.loading-caterpillar span:nth-child(3) { animation-delay: 0.2s; }
+.loading-caterpillar span:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes crawl {
+  0% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(12px); opacity: 1; }
+  100% { transform: translateX(0); opacity: 0.6; }
+}
+/* Course card initial state for scroll animation */
+.course-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Class saat muncul */
+.course-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
